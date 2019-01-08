@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>计算机问题求解—展示</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="displayTitle">
+        <h1 class="displayBigTitle">
+            这是计算机问题求解<span class="im">第9组</span>的大作业展示
+        </h1>
+        <h2 class="displaySmallTitle">
+                <a class="normal" href="https://www.wikiwand.com/en/Elevator_algorithm">电梯调度问题</a>
+            </h2>
+        
+    </div>
+    <div class="outBuilding">
+        <div class="displayBuildings">  
+            <div class="enters">
+                <div class="enter">
+                    floor6
+                </div>
+                <div class="enter">
+                    floor5
+                </div>
+                <div class="enter">
+                    floor4
+                </div>
+                <div class="enter">
+                    floor3
+                </div>
+                <div class="enter">
+                    floor2
+                </div>
+                <div class="enter">
+                    floor1
+                </div>
+
+            </div>
+            <div class="elevators" data-floor="1">
+                <div id="elevator1">
+                    <span class="im" id="floorNum1">1</span>/<span class="im" id="target1">none</span>
+                </div>
+            </div>
+            <div class="elevators" >
+                <div id="elevator2" data-floor="1">
+                    <span class="im" id="floorNum2">1</span>/<span class="im" id="target2">none</span>
+                </div>
+            </div>
+            <div class="exits">
+                <div class="exit">
+                    exit6
+                </div>
+                <div class="exit">
+                    exit5
+                </div>
+                <div class="exit">
+                    exit4
+                </div>
+                <div class="exit">
+                    exit3
+                </div>
+                <div class="exit">
+                    exit2
+                </div>
+                <div class="exit">
+                    exit1
+                </div>
+            </div>   
+        </div>
+    </div>
+    <div class="buttonbar">
+        <div>
+        <input  id="testpersons" value="输入test人数"/>
+        <button id="start_data">
+            开始生成数据
+        </button>
+        <button id="start_show">
+            开始展示
+        </button>
+        <button id="restart">
+            数据清零
+        </button>
+        </div>
+        <div>
+        <button id="moveUp">
+        </button>
+        <button id="moveDown">
+        </button>
+        <label>时间(秒)：</label>
+        <label  class="im" id="time" >0</label>
+        <label>等待时间:</label>
+        <label class="im" id="outcome">测试未开始</label>
+        </div>
+        <div>
+        <label>可选策略</label>
+        <select id="MODE">
+            <option value="fcfs">先来先服务</option>
+            <option value="fcfss">先来先服务[空闲]</option>
+            <option value="sstf">最短寻找楼层</option>
+            <option value="audi">Audi</option>
+            </select>
+        </div>
+    </div>
+    <div class="displayinfo">
+        <p>主要界面描述：六个入口表示六个楼层，六个出口表示楼层内部，两部电梯表示可用电梯,电梯内数字表示目前所在楼层/最终停下的楼层</p>
+        <p>步骤：1.输入人数；2.开始生成数据（随机）3.选择策略；4.开始展示</p>
+        <div class="displayinfo">
+            <p id="testinfo">这里是test信息</p>
+        </div>
+        
+    </div>
+    <script src="func.js"></script>   
+</body>
+</html>
