@@ -1,1 +1,142 @@
+/*
+展示框的flex属性
+*/
+.displayTitle{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/*
+大标题
+*/
+.displayBigTitle{
+    margin:0;
+}
+/*
+小标题
+*/
+.displaySmallTitle{
+    margin:0;
+}
+/*
+加红important
+*/
+.im{
+    color:red;
+    font-weight: bold;
+}
+/*
+标黑表示normal
+*/
+.normal{
+    color:black;
+    text-decoration: none;
+}
+.normal:hover{
+    color:rgb(50, 154, 202);
+}
 
+/*
+模拟建筑的外框
+*/
+.outBuilding{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.displayBuildings{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+    width:80%;
+    border: 1px solid black;
+}
+/*
+电梯入口enters
+*/
+.enters{
+    width:25%;
+    background: rgb(30, 214, 214);
+
+}
+.enter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    height:50px;
+    
+}
+/*
+电梯elevator
+*/
+.elevators{
+    width:15%;
+    background: rgb(92, 125, 233);
+    /* border: 1px solid black; */
+}
+#elevator1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:50px;
+    margin-top: 250px;
+    background: rgb(224, 216, 100);
+    font-size: 1em;
+}
+#elevator2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:50px;
+    margin-top: 250px;
+    background: blueviolet;
+    font-size: 1em; 
+}
+/*
+电梯出口exit
+*/
+.exits{
+    width:45%;
+    background: rgb(191, 241, 178);
+
+}
+.exit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width:100%;
+    height:50px;
+}
+/*
+展示信息
+*/
+.displayinfo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px dashed blue;
+    margin-top:30px;
+}
+/*
+工作面板buttonbar
+*/
+.buttonbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px dashed blue;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+/*隐藏按钮*/
+#moveUp,#moveDown{
+    display:none;
+}
