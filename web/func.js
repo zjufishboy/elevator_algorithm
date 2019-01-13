@@ -117,6 +117,7 @@ function deal(){
         case "fcfs" :   elevatorstragegy_fifs();break;
         case "fcfss":   elevatorstragegy_fifs();console.error("！空闲！回到1楼");elevatormove(1,1);break;
         case "sstf" :   shortestSeek();break;
+        case "cscan":   cscan();break;
         default:return;
     }
 }
@@ -138,26 +139,17 @@ function elevatorstragegy_fifs(){
     }
     document.getElementById("outcome").innerHTML=waits;
 } 
-/*找到最近楼层*/
+/*最短距离优先算法*/
 function shortestSeek(){
     let array=[0,0,0,0,0,0];
     let records=[];
     let now=1;
     let site=0;
     let slength=6;
-
-
-
-
     let wait =0;
     let lastto=1;
     let lastRunTime=0;
     let waits="";
-
-
-
-
-
     /*找到最近的*/
     for(let j=0;j<persons;j++){
         slength=6;
@@ -183,7 +175,55 @@ function shortestSeek(){
     }
     document.getElementById("outcome").innerHTML=waits;
 }
-
+/*单向扫描最短算法*/
+function cscan(){
+    let state=[];
+    let records=[];
+    let recordsa=[];
+    let recordsb=[];
+    let highest=6;
+    let wait=[];
+    let num1=0,num2=0;
+    let waits='';
+    for(let i=0;i<persons;i++){
+        if(froms[i]<=tos[i])state.push(1);
+        else state.push(0);
+    }/*任务状态的分析 */
+    for(let i=0;i<persons;i++){
+        if(state[i]==1){
+            recordsa.push(froms[i]);
+            recordsa.push(tos[i]);
+            num1+=2;
+        }
+        else{
+            recordsb.push(froms[i]);
+            recordsb.push(tos[i]);
+            num2+=2;
+        }
+    }
+    let a=recordsa.sort();
+    let b=recordsb.sort();
+    console.log(a,b);
+    highest=a[num1-1]>b[num2-1]?a[num1-1]:b[num2-1];
+    records=recordsa.sort().concat(recordsb.sort().reverse());
+    console.log(records);
+    for(let i=0;i<persons;i++){
+        if(state[i]==1){
+            wait.push(froms[i]-1)
+        }
+        else{
+            wait.push(highest-froms[i]+highest-1);
+        }
+    }
+    console.log(highest);
+    console.log(wait);
+    for(let i=0;i<persons;i++){
+        waits+=wait[i]+' ';
+        elevatormove(1,records[2*i]); 
+        elevatormove(1,records[2*i+1]); 
+    }
+    document.getElementById("outcome").innerHTML=waits;
+}
 
 
 
@@ -194,6 +234,7 @@ function show_the_data(){
     switch(document.getElementById("MODE").value){
         case "fcfs":show_the_data_fcfs();break;
         case "fcfss":show_the_data_fcfs();break;
+        case "cscan": show_the_data_cscan();break;
         default:return;
     }
 }
@@ -203,6 +244,15 @@ function show_the_data_fcfs(){
     let i=0;
     for( i = 0;i<persons-1;i++){
         x+=froms[i]+"=>"+tos[i]+"|"
+    }
+    x+=froms[i]+"=>"+tos[i];
+    $(document).ready(function(){$("#testinfo").text(x);}); 
+}
+function show_the_data_cscan(){
+    let x="DATA SET:";
+    let i=0;
+    for( i = 0;i<persons-1;i++){
+        x+=froms[i]+"=>"+tos[i]+"|";
     }
     x+=froms[i]+"=>"+tos[i];
     $(document).ready(function(){$("#testinfo").text(x);}); 
